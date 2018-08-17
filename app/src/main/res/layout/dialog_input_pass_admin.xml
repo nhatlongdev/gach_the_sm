@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rlt_parent_dialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlt_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_05x"
+        android:background="@color/tb_guest_wait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_3x"
+        android:layout_marginRight="@dimen/dimen_3x"
+        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:padding="@dimen/dimen_05x"
+            android:gravity="center_horizontal"
+            android:text="Nhập mật khẩu Admin"/>
+        <RelativeLayout
+            android:id="@+id/rlt_ma_the"
+            android:layout_marginLeft="@dimen/dimen_1x"
+            android:layout_marginRight="@dimen/dimen_1x"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginBottom="@dimen/dimen_05x"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_6x">
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"/>
+            <View
+                android:id="@+id/view2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+            <View
+                android:id="@+id/view3"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/black"/>
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black"/>
+            <EditText
+                android:id="@+id/edt_pass"
+                android:layout_below="@+id/view1"
+                android:layout_toLeftOf="@+id/view3"
+                android:layout_toRightOf="@+id/view2"
+                android:layout_above="@+id/view4"
+                android:inputType="number"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/dimen_1x"
+                android:background="@color/transparent"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_below="@+id/rlt_ma_the"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_5x"
+            android:background="@drawable/press_button_color"
+            android:text="OK"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

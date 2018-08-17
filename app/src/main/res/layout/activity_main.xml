@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:keepScreenOn="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/rlt_top"
+        android:orientation="horizontal"
+        android:background="@color/transparent_black_new_shop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_7x">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:src="@drawable/back_arrow"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_1x"
+            android:padding="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/li_parent_header_sim"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_05x"
+            android:layout_width="0dp"
+            android:layout_weight="6.5"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/li_sim1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:id="@+id/li_parent_selected_sim1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/img_check_sim1"
+                        android:layout_width="@dimen/dimen_3x"
+                        android:padding="@dimen/dimen_05x"
+                        android:src="@drawable/check"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tv_network_sim1"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/bluee"
+                        android:text="VIETTEL"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_money_sim1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/bluee"
+                    android:text="0"/>
+                <TextView
+                    android:id="@+id/tv_number_sim1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/bluee"
+                    android:text="0987647213"/>
+                <TextView
+                    android:id="@+id/tv_date_sim1"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/bluee"
+                    android:text="06/2018"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/li_sim2"
+                android:layout_below="@+id/li_sim1"
+                android:layout_toRightOf="@+id/img_back"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:id="@+id/li_parent_selected_sim2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/img_check_sim2"
+                        android:layout_width="@dimen/dimen_3x"
+                        android:padding="@dimen/dimen_05x"
+                        android:src="@drawable/check"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/tv_network_sim2"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/white"
+                        android:text="VINA"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_money_sim2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:text="0"/>
+                <TextView
+                    android:id="@+id/tv_number_sim2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:singleLine="true"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:text="0942561556"/>
+                <TextView
+                    android:id="@+id/tv_date_sim2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:text="06/2018"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/rlt_top"
+        android:layout_above="@+id/rlt_bottom"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/li_row1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <Button
+                android:onClick="AddFragment"
+                android:id="@+id/btn_gui_the"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:text="Gửi thẻ"/>
+            <Button
+                android:onClick="AddFragment"
+                android:id="@+id/btn_nap_the"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:text="Nạp thẻ"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/li_row2"
+            android:layout_below="@+id/li_row1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <Button
+                android:onClick="AddFragment"
+                android:id="@+id/btn_account"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:text="Thẻ lỗi"/>
+            <Button
+                android:onClick="AddFragment"
+                android:id="@+id/btn_setting"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:text="Cài đặt"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/li_row3"
+            android:layout_below="@+id/li_row2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <Button
+                android:onClick="AddFragment"
+                android:id="@+id/btn_search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:text="Tra cứu"/>
+            <Button
+                android:onClick="AddFragment"
+                android:id="@+id/btn_admin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:text="Admin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/li_row4"
+            android:layout_below="@+id/li_row3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <Button
+                android:id="@+id/btn_switch_mode_nap"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/press_button_color"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x"
+                android:padding="@dimen/dimen_1x"
+                android:text="Chế độ nạp thẻ tự động"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_2x" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fr_layout"
+        android:layout_below="@+id/rlt_top"
+        android:layout_above="@+id/rlt_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlt_bottom"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent_black_new_shop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/rlt_bell"
+            android:textColor="@color/bluee"
+            android:text=""/>
+        <RelativeLayout
+            android:id="@+id/rlt_bell"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/dimen_10x"
+            android:layout_height="match_parent">
+            <ImageView
+                android:padding="@dimen/dimen_05x"
+                android:tint="@color/bluee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/notification"/>
+            <TextView
+                android:id="@+id/tv_count_card_new"
+                android:visibility="invisible"
+                android:layout_marginTop="@dimen/dimen_05x"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/background_circle"
+                android:layout_marginRight="@dimen/dimen_x1x"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:padding="@dimen/dimen_05x"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:text="10"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

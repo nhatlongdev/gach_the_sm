@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".fragment.SettingFragment">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cài đặt"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/bluee"
+        android:textSize="@dimen/dimen_3x"
+        android:padding="@dimen/dimen_1x"/>
+    <View
+        android:id="@+id/view"
+        android:layout_below="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="1dp"/>
+    <Button
+        android:id="@+id/btn_tt_sim"
+        android:padding="@dimen/dimen_1x"
+        android:layout_below="@+id/view"
+        android:text="Thông tin sim"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/dimen_1x"
+        android:textColor="@color/white"
+        android:background="@drawable/press_button_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

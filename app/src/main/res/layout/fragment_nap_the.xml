@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".fragment.NapTheFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlt_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_5x">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_toLeftOf="@+id/tv_so_lan_nap_sai_lien_tiep"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nạp thẻ"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/bluee"
+            android:textSize="@dimen/dimen_3x"
+            android:padding="@dimen/dimen_05x"/>
+        <TextView
+            android:id="@+id/tv_so_lan_nap_sai_lien_tiep"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="1"
+            android:visibility="invisible"
+            android:layout_marginLeft="@dimen/dimen_05x"
+            android:layout_marginRight="@dimen/dimen_05x"
+            android:layout_marginTop="@dimen/dimen_05x"
+            android:layout_marginBottom="@dimen/dimen_05x"
+            android:background="@drawable/background_circle"
+            android:layout_width="@dimen/dimen_4x"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_below="@+id/rlt_header"
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:id="@+id/li_content"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="@dimen/dimen_x05x"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height= "150dp">
+        <LinearLayout
+            android:id="@+id/li_content_card"
+            android:layout_marginTop="@dimen/dimen_05x"
+            android:visibility="invisible"
+            android:layout_toLeftOf="@+id/li_button_right"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_05x"
+            android:layout_width="match_parent"
+            android:layout_height= "150dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:layout_height="wrap_content"
+                    android:text="Mã thẻ: "/>
+                <TextView
+                    android:id="@+id/tv_ma_the"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:textSize="@dimen/dimen_2x"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:layout_height="wrap_content"
+                    android:text="Mạng: "/>
+                <TextView
+                    android:id="@+id/tv_nha_mang"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text=""/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:text="Mã KH: "/>
+                <TextView
+                    android:id="@+id/tv_ma_kh"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text=""/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:text="TT KH: "/>
+                <TextView
+                    android:id="@+id/tv_tt_kh"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_x1x"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text=""/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/li_button_right"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/dimen_x05x"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/dimen_8x"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btn_lay_the_dung"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:padding="1dp"
+                android:background="@drawable/press_button_color"
+                android:layout_marginBottom="@dimen/dimen_05x"
+                android:text="Lấy thẻ đúng"/>
+            <Button
+                android:id="@+id/btn_the_nay_loi"
+                android:layout_width="match_parent"
+                android:background="@drawable/press_button_color_red"
+                android:layout_height="0dp"
+                android:padding="1dp"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="Thẻ này sai"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_msg_no_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hiện tại không có thẻ cần nạp hộ!"
+            android:layout_toLeftOf="@+id/li_button_right"
+            android:textSize="@dimen/dimen_2x"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_05x"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@+id/li_content"
+        android:layout_marginTop="@dimen/dimen_05x"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"/>
+    <ScrollView
+        android:layout_below="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:id="@+id/tv_title_kq"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:textStyle="bold"
+               android:textSize="@dimen/dimen_2x"
+               android:padding="@dimen/dimen_05x"
+               android:textColor="@color/bluee"
+               android:text="Kết quả"/>
+           <TextView
+               android:id="@+id/tv_result_nap_the"
+               android:layout_below="@+id/tv_title_kq"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="@dimen/dimen_1x"
+               android:textColor="@color/bluee"
+               android:text=""/>
+           <LinearLayout
+               android:id="@+id/li_button_bottom"
+               android:layout_below="@+id/tv_result_nap_the"
+               android:layout_marginTop="@dimen/dimen_1x"
+               android:layout_marginRight="@dimen/dimen_1x"
+               android:layout_marginLeft="@dimen/dimen_1x"
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <Button
+                   android:id="@+id/btn_reload"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_marginRight="@dimen/dimen_1x"
+                   android:layout_height="@dimen/dimen_5x"
+                   android:background="@drawable/press_button_disable"
+                   android:textColor="@color/grey"
+                   android:text="Lấy thẻ mới"/>
+
+               <Button
+                   android:id="@+id/btn_nap_the"
+                   android:layout_toLeftOf="@+id/btn_update"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_marginRight="@dimen/dimen_1x"
+                   android:layout_height="@dimen/dimen_5x"
+                   android:background="@drawable/press_button_disable"
+                   android:textColor="@color/grey"
+                   android:text="Nạp thẻ"/>
+
+               <Button
+                   android:id="@+id/btn_update"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="@dimen/dimen_5x"
+                   android:background="@drawable/press_button_disable"
+                   android:textColor="@color/grey"
+                   android:text="Cập nhật"/>
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/li_button_bottom1"
+               android:layout_below="@+id/li_button_bottom"
+               android:layout_marginTop="@dimen/dimen_1x"
+               android:layout_marginRight="@dimen/dimen_1x"
+               android:layout_marginLeft="@dimen/dimen_1x"
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <Button
+                   android:id="@+id/btn_tra_cuu"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_marginRight="@dimen/dimen_1x"
+                   android:layout_height="@dimen/dimen_5x"
+                   android:background="@drawable/press_button_disable"
+                   android:textColor="@color/grey"
+                   android:text="Tra cứu"/>
+
+               <Button
+                   android:id="@+id/btn_tra_the"
+                   android:layout_toLeftOf="@+id/btn_update"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_marginRight="@dimen/dimen_1x"
+                   android:layout_height="@dimen/dimen_5x"
+                   android:background="@drawable/press_button_disable"
+                   android:textColor="@color/grey"
+                   android:text="Trả thẻ"/>
+
+               <Button
+                   android:id="@+id/btn_auto"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="@dimen/dimen_5x"
+                   android:background="@drawable/press_button_color"
+                   android:textColor="@color/grey"
+                   android:text="Nạp tự động"/>
+           </LinearLayout>
+
+       </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

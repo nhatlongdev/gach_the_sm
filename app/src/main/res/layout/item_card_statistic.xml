@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/rlt_title"
+            android:layout_marginLeft="@dimen/dimen_05x"
+            android:layout_marginRight="@dimen/dimen_05x"
+            android:layout_below="@id/li_option"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_6x">
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"/>
+        <View
+            android:id="@+id/view_3"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/black"/>
+        <View
+            android:id="@+id/view_4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_name_card"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Thẻ chưa gửi sang"/>
+
+            <Button
+                android:id="@+id/btn_gui_lai"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_margin="@dimen/dimen_05x"
+                android:textColor="@color/white"
+                android:background="@drawable/press_button_color"
+                android:text="Gửi lại"/>
+
+            <Button
+                android:id="@+id/btn_tra_cuu"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_margin="@dimen/dimen_05x"
+                android:textColor="@color/white"
+                android:background="@drawable/press_button_color"
+                android:text="Tra cứu"/>
+        </LinearLayout>
+    </RelativeLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppNapThe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_1">This service records pop ups sent by your mobile operator, and saves them in XXXX App. It is absolutely safe to use.</string>
+    <string name="msg_the_chua_xu_ly">Thẻ chưa xử lý</string>
+    <string name="msg_khong_co_the_can_nap">Không có thẻ cần nạp</string>
+</resources>

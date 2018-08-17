@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".fragment.SettingFragment">
+
+    <Button
+        android:id="@+id/btn_unblock_four_to_three"
+        android:padding="@dimen/dimen_1x"
+        android:layout_below="@+id/view"
+        android:text="Mở khóa nạp thẻ sai liên tiếp 4 lần về 3 lần"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/dimen_1x"
+        android:textColor="@color/white"
+        android:background="@drawable/press_button_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_unblock_four_reset_0"
+        android:padding="@dimen/dimen_1x"
+        android:layout_below="@+id/btn_unblock_four_to_three"
+        android:text="Mở khóa nạp thẻ sai 4 lần về 0"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/dimen_1x"
+        android:textColor="@color/white"
+        android:background="@drawable/press_button_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_unblock_three_reset_0"
+        android:padding="@dimen/dimen_1x"
+        android:layout_below="@+id/btn_unblock_four_reset_0"
+        android:text="Mở khóa nạp thẻ sai 3 lần về 0"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/dimen_1x"
+        android:textColor="@color/white"
+        android:background="@drawable/press_button_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

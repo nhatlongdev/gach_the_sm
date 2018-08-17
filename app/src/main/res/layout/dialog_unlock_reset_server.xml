@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rlt_parent_dialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlt_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_05x"
+        android:background="@color/tb_guest_wait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_3x"
+        android:layout_marginRight="@dimen/dimen_3x"
+        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/tv_title_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:padding="@dimen/dimen_05x"
+            android:gravity="center_horizontal"
+            android:text="Để mở khóa nạp"/>
+        <TextView
+            android:id="@+id/btn_reset_ve_0"
+            android:layout_below="@+id/tv_title_content"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/press_button_color"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:paddingRight="@dimen/dimen_1x"
+            android:paddingLeft="@dimen/dimen_1x"
+            android:paddingBottom="@dimen/dimen_1x"
+            android:paddingTop="@dimen/dimen_1x"
+            android:textColor="@color/white"
+            android:text="Mở khóa"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlt_parent_1"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_05x"
+        android:background="@color/tb_guest_wait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_3x"
+        android:layout_marginRight="@dimen/dimen_3x"
+        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/tv_title_content1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_2x"
+            android:gravity="center"
+            android:text="Bạn chắc chắn đã nạp một thẻ đúng bằng tay"/>
+        <LinearLayout
+            android:layout_below="@+id/tv_title_content1"
+            android:layout_width="match_parent"
+            android:padding="@dimen/dimen_1x"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_dong_y"
+                android:background="@drawable/press_button_color"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/dimen_5x"
+                android:text="Đồng ý"/>
+            <Button
+                android:id="@+id/btn_huy_bo"
+                android:background="@drawable/press_button_color"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_1x"
+                android:layout_height="@dimen/dimen_5x"
+                android:text="Hủy bỏ"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
