@@ -265,39 +265,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 mMessgeResultTextAuto, new IntentFilter("RESULT_TEXT_AUTO"));
 
-        /*lay cake json nap theo sim*/
-        key_sim_nap = GlobalValue.jsonSimSelected.optString("code") + "_" + GlobalValue.jsonSimSelected.optString("serial_number")+ "_nap";
-        Date date_ngay = new Date();
-        String strDateFormat_ = "ddMMyyyy";
-        /*hhhhhh*/
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(strDateFormat_);
-        key_ngay = "tong_so_lan_nap_sai_trong_ngay_" + simpleDateFormat.format(date_ngay);
-
-        Date date_thang = new Date();
-        String strMonthFormat = "MMyyyy";
-        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat(strMonthFormat);
-        key_month = "tong_so_tien_nap_trong_thang_" + simpleDateFormat1.format(date_thang);
-
-        /*tao du lieu cake nap*/
-        if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null){
-            try {
-                /*lay ra mot card da luu trong cache*/
-                jsonCakeNapTheoSim = new JSONObject(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }else {
-            jsonCakeNapTheoSim = new JSONObject();
-            try {
-                jsonCakeNapTheoSim.put("so_the_sai_lien_tiep",0);
-                jsonCakeNapTheoSim.put(key_ngay,0);
-                jsonCakeNapTheoSim.put("tong_so_lan_nap_sai",0);
-                jsonCakeNapTheoSim.put(key_month,0);
-                jsonCakeNapTheoSim.put("tong_so_tien_nap",0);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     @Override
@@ -536,6 +503,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
+        }
+
+        /*lay cake json nap theo sim*/
+        key_sim_nap = GlobalValue.jsonSimSelected.optString("code") + "_" + GlobalValue.jsonSimSelected.optString("serial_number")+ "_nap";
+        Date date_ngay = new Date();
+        String strDateFormat_ = "ddMMyyyy";
+        /*hhhhhh*/
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(strDateFormat_);
+        key_ngay = "tong_so_lan_nap_sai_trong_ngay_" + simpleDateFormat.format(date_ngay);
+
+        Date date_thang = new Date();
+        String strMonthFormat = "MMyyyy";
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat(strMonthFormat);
+        key_month = "tong_so_tien_nap_trong_thang_" + simpleDateFormat1.format(date_thang);
+
+        /*tao du lieu cake nap*/
+        if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null){
+            try {
+                /*lay ra mot card da luu trong cache*/
+                jsonCakeNapTheoSim = new JSONObject(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else {
+            jsonCakeNapTheoSim = new JSONObject();
+            try {
+                jsonCakeNapTheoSim.put("so_the_sai_lien_tiep",0);
+                jsonCakeNapTheoSim.put(key_ngay,0);
+                jsonCakeNapTheoSim.put("tong_so_lan_nap_sai",0);
+                jsonCakeNapTheoSim.put(key_month,0);
+                jsonCakeNapTheoSim.put("tong_so_tien_nap",0);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -947,7 +948,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void run() {
                 Log.d("inForSIm", "CAKE THE DA LOAD: " + DataStoreManager.getCardNapTheoSim());
-                Log.d("inForSIm_error", "CAKE JSON INFOR SIM NAP: " + GlobalValue.jsonDataCardLoaded.optJSONObject("09877717966148_GPC").toString());
                 String key_sim_nap = GlobalValue.jsonSimSelected.optString("code") + "_" + GlobalValue.jsonSimSelected.optString("serial_number")+ "_nap";
                 if(DataStoreManager.getCheDoNap().equals("1")){
                     if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")< 4){

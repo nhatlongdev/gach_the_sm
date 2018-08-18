@@ -7,6 +7,8 @@ package com.example.computer.appnapthe.configs;
 public class Apis {
 
     /*IP*/
+    public static String SERVER_IP = "35.185.129.233";
+    public static String SERVER_PORT = ":8860";
 
 
     public static String APP_DOMAIN = "http://" + SERVER_IP + SERVER_PORT;
