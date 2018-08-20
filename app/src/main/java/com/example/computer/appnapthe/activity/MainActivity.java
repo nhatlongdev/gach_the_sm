@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,9 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -138,6 +142,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //biến kiểm soát trường hợp lấy card về mà đã có trong cake thì delay 10s mới xử lý
     public int delay_10s = 0;
+
+    /* back press 2 lan*/
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -603,12 +610,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            finish();
+        }else {
+            doubleBackToExitPressedOnce = true;
+            Toast.makeText(this,"Vui lòng nhấn thêm lần nữa để thoát" , Toast.LENGTH_SHORT).show();
+            Handler handler = new Handler();
+            Runnable myTask = new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            };
+            handler.postDelayed(myTask,2000);
+        }
+    }
+
+    @Override
     public void onDestroy(){
         super.onDestroy();
-        Log.d("inForSIm", "APP KILLED1");
         if(MainActivity.this.isFinishing()){
             //do your stuff here
-            Log.d("inForSIm", "APP KILLED");
+            Log.d("inForSIm_", "APP KILLED");
             timerNapAuto.cancel();
             timer.cancel();
         }
@@ -674,12 +699,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 DataStoreManager.saveCheDoNap("1");
                                 btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ bằng tay");
                                 tvResult.setText("Hệ thống đang ở chế độ gạch thẻ tự động");
+                                timerNapAuto = new Timer();
                                 //run process nap tu dong
                                 progressAutoPayCard();
                             }else {
                                 DataStoreManager.saveCheDoNap("0");
                                 btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ tự động");
                                 tvResult.setText("Hệ thống đang ở chế độ gạch thẻ bằng tay");
+                                timerNapAuto.cancel();
                             }
                             /*set bg btn nap the*/
                             setBackgroundBtnNapThe(DataStoreManager.getCheDoNap());
@@ -950,22 +977,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         timerNapAuto.schedule(new TimerTask() {
             @Override
             public void run() {
-                Log.d("inForSIm", "CAKE THE DA LOAD: " + DataStoreManager.getCardNapTheoSim());
+                Log.d("inForSIm_", "CAKE THE DA LOAD: " + DataStoreManager.getCardNapTheoSim());
+                writeLog("Call Schedule");
                 String key_sim_nap = GlobalValue.jsonSimSelected.optString("code") + "_" + GlobalValue.jsonSimSelected.optString("serial_number")+ "_nap";
                 if(DataStoreManager.getCheDoNap().equals("1")){
                     if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")< 4){
                         if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")== 3){
+                            Log.d("inForSIm_", "BẮT ĐẦU GỌI LỆNH GET CARD Lan dau tien cua sim luc 0 " + DateFormat.getDateTimeInstance().format(new Date()));
                             getOkCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
                         }else {
+                            Log.d("inForSIm_", "BẮT ĐẦU GỌI LỆNH GET CARD Lan dau tien cua sim luc 1 " + DateFormat.getDateTimeInstance().format(new Date()));
                             getCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
                         }
                     }else {
-                        Log.d("inForSIm", "BẮT ĐẦU GỌI LỆNH GET CARD Lan dau tien cua sim");
+                        Log.d("inForSIm_", "BẮT ĐẦU GỌI LỆNH GET CARD Lan dau tien cua sim luc 2 " + DateFormat.getDateTimeInstance().format(new Date()));
                         getCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
                     }
                 }
             }
-        },1000, 20000);
+        },1000, 15000);
 
     }
 
