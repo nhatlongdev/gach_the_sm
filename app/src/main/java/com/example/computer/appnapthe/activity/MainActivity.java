@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public RequestQueue requestQueue;
     private int soLanCardGiongNhauLonHonKhongLienTiep = 0;
 
+    // lưu log gửi đi nhận về khi gọi 101,100
+    public String logApp = "";
+
     /*thang hien tai*/
     private String monthCurrent = "";
 
@@ -952,6 +955,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(DataStoreManager.getCheDoNap().equals("1")){
                     if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")< 4){
                         if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")== 3){
+                            writeLog("- Gọi getOkCard lúc ");
                             getOkCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
                         }else {
                             Log.d("inForSIm", "BẮT ĐẦU GỌI LỆNH GET CARD");
@@ -965,6 +969,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         },1000, 20000);
 
+    }
+
+    //Hàm ghi log
+    public void writeLog(String msg){
+        logApp = logApp + "\n" + msg + DateFormat.getDateTimeInstance().format(new Date());
+        WriteFile.progressWriteFile(this, Constant.NAME_FILE_LOG_APP,logApp);
     }
 
     /*QUEUE CARD*/

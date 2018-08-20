@@ -141,6 +141,7 @@ public class Constant {
 
     /*LUU CACHE FILE*/
     public static final String NAME_FILE_LIST_SIM = "danhSachSim.text";
-    public static final String NAME_FILE_CARD_LOADED = "dsCardLoaded.text";
+    public static final String NAME_FILE_LOG_APP = "log_app_card.text";
+
 }
 
