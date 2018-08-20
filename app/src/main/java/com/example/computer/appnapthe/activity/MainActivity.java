@@ -955,10 +955,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(DataStoreManager.getCheDoNap().equals("1")){
                     if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")< 4){
                         if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap) != null && GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep")== 3){
-                            writeLog("- Gọi getOkCard lúc ");
                             getOkCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
                         }else {
-                            Log.d("inForSIm", "BẮT ĐẦU GỌI LỆNH GET CARD");
                             getCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
                         }
                     }else {
@@ -973,7 +971,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Hàm ghi log
     public void writeLog(String msg){
-        logApp = logApp + "\n" + msg + DateFormat.getDateTimeInstance().format(new Date());
+        logApp = logApp + "\n\n---> SIM: " + GlobalValue.jsonSimSelected.optString("serial_number")+ ": " + msg + DateFormat.getDateTimeInstance().format(new Date());
         WriteFile.progressWriteFile(this, Constant.NAME_FILE_LOG_APP,logApp);
     }
 
@@ -1070,14 +1068,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if(GlobalValue.jsonDataCardLoaded.optJSONObject(keyCardCurrent) != null){
                                     if(delay_10s <2){
                                         delay_10s = delay_10s + 1;
+                                        writeLog("- Get card tra ve nhưng thẻ đã có trong cake chờ 15s ");
                                     }else {
                                         delay_10s = 0;
                                         // Thẻ đã nạp với nhà mạng nhưng chưa cập nhật lên server
+                                        writeLog("- Get card tra ve nhưng thẻ đã có trong cake xử lý: Data Cake là==>  " + GlobalValue.jsonDataCardLoaded.optJSONObject(keyCardCurrent).toString());
                                         if(GlobalValue.jsonDataCardLoaded.optJSONObject(keyCardCurrent).optString("ussdRes2").equals("")){ // chưa gọi nạp với nhà mạng
                                             Log.d("inForSIm", "ĐÃ CÓ TRONG CAKE, TRƯỜNG USSDRES2 TRỐNG: " + GlobalValue.jsonDataCardLoaded.optJSONObject(keyCardCurrent).toString());
                                             //TO DO
                                             checkCallNapTheTuApp = true;
                                             valueCode = 101;
+                                            writeLog("- Chuẩn bị gọi 101 CARD:" + jsonCard.optString("cardCode")+"==> ");
                                             callPhoneNumber(101);
                                         }else { // đã nạp với nhà mạng nhưng chưa update tới server--> Tiến hành update
                                             Log.d("inForSIm", "ĐÃ CÓ TRONG CAKE, TRƯỜNG USSDRES2 CÓ DỮ LIỆU: " + GlobalValue.jsonDataCardLoaded.optJSONObject(keyCardCurrent).toString());
@@ -1085,6 +1086,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         }
                                     }
                                 }else {
+                                    writeLog("- Thẻ mới lưu cake ");
                                     //Thẻ mới lưu vào cake
                                     try {
                                         Log.d("inForSIm", "SIZE GlobalValue.jsonDataCardLoaded TRƯỚC ADD : " + GlobalValue.jsonDataCardLoaded.length() );
@@ -1101,6 +1103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     //TO DO
                                     checkCallNapTheTuApp = true;
                                     valueCode = 101;
+                                    writeLog("- Chuẩn bị gọi 101 CARD:" + jsonCard.optString("cardCode")+"==> ");
                                     callPhoneNumber(101);
                                 }
                             }else {
@@ -1251,6 +1254,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                 //TO DO
                                                 checkCallNapTheTuApp = true;
                                                 valueCode = 101;
+                                                writeLog("- Chuẩn bị gọi 101 CARD:" + jsonCard.optString("cardCode")+"==> ");
                                                 callPhoneNumber(101);
                                             }
                                         }else { // đã nạp với nhà mạng nhưng chưa update tới server--> Tiến hành update
@@ -1272,6 +1276,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     //TO DO
                                     checkCallNapTheTuApp = true;
                                     valueCode = 101;
+                                    writeLog("- Chuẩn bị gọi 101 CARD:" + jsonCard.optString("cardCode")+"==> ");
                                     callPhoneNumber(101);
                                 }
                             }
@@ -1363,6 +1368,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(text != null && !text.equals("") && checkStrinhResult(text) == true && checkCallNapTheTuApp == true){
                 Log.d("inForSIm", "THOA MAN DK checkStrinhResult(text) == true==>>" + valueCode);
                 if(valueCode == 101 && checkStringResult101(text) == true){
+                    writeLog("- Dữ liệu 101 trả về: " + text + " lúc: ");
                     tkChinhTruoc = findMoney(text);
                     msg_101 = "*101#: " + text;
                     try {
@@ -1370,11 +1376,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.d("inForSIm", "GIÁ TRỊ JSON CARD SAU KHI GOI 101: " + valueCode + "--------" + jsonCard.toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        DataStoreManager.saveErrorPutValeuToJson(text);
+                        writeLog("PUSH 101 LOI NHAY VAO TRY CATCH");
                     }
                     valueCode = 100;
+                    writeLog("- Chuẩn bị gọi 100 lúc: ");
                     callPhoneNumber(100);
                 }else if(valueCode == 100 && checkStringResult100(text) == true){
+                    writeLog("- Dữ liệu 100 trả về: " + text + " lúc: ");
                     checkCallNapTheTuApp = false;
                     GlobalValue.isUpdateToServer = false;
                     tkChinhSau = findMoney(text);
@@ -1456,7 +1464,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         Log.d("inForSIm", "JSON CAKE THÔNG TIN SIM ĐÃ NẠP(SAI BAO LẦN ....): =====>>>>" + GlobalValue.jsonNapCake.toString());
                     }
-
+                    writeLog("- jsonCard sau xu ly 100 trả về: " + jsonCard.toString() + " lúc: ");
                     /*save cake nap*/
                     try {
                         GlobalValue.jsonNapCake.put(key_sim_nap,jsonCakeNapTheoSim);
@@ -1486,6 +1494,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.d("inForSIm", "JSON CARD SAU KHI NAP *100* TRA VE KET QUA : ====>>>" + jsonCard.toString());
 
                         //NẠP THẺ TỰ ĐỘNG THÀNH CÔNG TIẾN HÀNH UPDATE TO SERVER
+                        writeLog("- jsonCard trước khi update là: " + jsonCard.toString() + " lúc: ");
                         if(GlobalValue.isGetOkCard == true){
                             Log.d("inForSIm", "GỌI UPDATE OK CARD TAI BROASCASD: " + jsonCard.toString());
                             updateOkCardToServer(jsonCard);

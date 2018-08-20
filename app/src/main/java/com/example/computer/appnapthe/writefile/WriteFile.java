@@ -43,7 +43,7 @@ public class WriteFile {
             File file;
             FileOutputStream outputStream;
             try {
-                file = new File(Environment.getExternalStorageDirectory(), nameFile);
+                file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), nameFile);
                 Log.d("MainActivity", Environment.getExternalStorageDirectory().getAbsolutePath());
                 outputStream = new FileOutputStream(file);
                 outputStream.write(content.getBytes());
