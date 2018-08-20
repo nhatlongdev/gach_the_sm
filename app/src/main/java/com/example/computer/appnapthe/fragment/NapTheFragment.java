@@ -170,26 +170,13 @@ public class NapTheFragment extends BaseFragment implements View.OnClickListener
             }else if(GlobalValue.jsonNapCake.optJSONObject(key_sim_nap).optInt("so_the_sai_lien_tiep") >= 4){
                 liContentValueText.setVisibility(View.INVISIBLE);
                 tvMsgNoCard.setVisibility(View.VISIBLE);
-                if(GlobalValue.isUpdateToServer == true){
-                    checkClickButton = -1;
-                    showHiddenButton(checkClickButton);
-                    showHiddenButtonLayTheDung(true);
-                    showHiddenButtonTheSai(true);
-                    updateStatusBtnTraCuu(false);
-                    updateStatusBtnTraThe(false);
-                    tvMsgNoCard.setText("Cảnh báo!!!\nTài khoản của bạn đã bị khóa do nạp sai quá số lần quy định, Vui lòng liên hệ Admin để được mở khóa");
-                }else {
-                    /*get card*/
-//                    runPostDelay("Đang lấy mã thẻ, vui lòng đợi ...", 0);
-//                    getOkCard(GlobalValue.jsonSimSelected.optString("code"), GlobalValue.jsonSimSelected.optString("serial_number"));
-                    showHiddenButtonLayTheDung(false);
-                    showHiddenButtonTheSai(true);
-                    checkClickButton = -1;
-                    showHiddenButton(checkClickButton);
-                    updateStatusBtnTraThe(false);
-                    updateStatusBtnTraCuu(false);
-                    tvMsgNoCard.setText("Hiện tại không có thẻ cần nạp hộ!");
-                }
+                checkClickButton = -1;
+                showHiddenButton(checkClickButton);
+                showHiddenButtonLayTheDung(true);
+                showHiddenButtonTheSai(true);
+                updateStatusBtnTraCuu(false);
+                updateStatusBtnTraThe(false);
+                tvMsgNoCard.setText("Cảnh báo!!!\nTài khoản của bạn đã bị khóa do nạp sai quá số lần quy định, Vui lòng liên hệ Admin để được mở khóa");
             }else {
                 /*get card*/
 //                runPostDelay("Đang lấy mã thẻ, vui lòng đợi ...", 0);
@@ -902,6 +889,7 @@ public class NapTheFragment extends BaseFragment implements View.OnClickListener
                         if(status == true){
                             if(response.optJSONObject("res") != null && response.optJSONObject("res").optString("cardCode")!= null){
                                 GlobalValue.isGetOkCard = false;
+                                GlobalValue.isUpdateToServer = false;
                                 updateStatusBtnTraThe(true);
                                 updateStatusBtnTraCuu(true);
                                 closeHandle();
@@ -1144,6 +1132,7 @@ public class NapTheFragment extends BaseFragment implements View.OnClickListener
                                 updateStatusBtnTraThe(true);
                                 updateStatusBtnTraCuu(true);
                                 GlobalValue.isGetOkCard = true;
+                                GlobalValue.isUpdateToServer = false;
                                 closeHandle();
                                 tvMsgNoCard.setVisibility(View.INVISIBLE);
                                 liContentValueText.setVisibility(View.VISIBLE);

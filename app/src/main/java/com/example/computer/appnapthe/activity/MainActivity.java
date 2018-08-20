@@ -694,23 +694,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     btnYes_the_loi.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            GlobalValue.isUpdateToServer = false;
-                            if(DataStoreManager.getCheDoNap().equals("0")){
-                                DataStoreManager.saveCheDoNap("1");
-                                btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ bằng tay");
-                                tvResult.setText("Hệ thống đang ở chế độ gạch thẻ tự động");
-                                timerNapAuto = new Timer();
-                                //run process nap tu dong
-                                progressAutoPayCard();
-                            }else {
-                                DataStoreManager.saveCheDoNap("0");
-                                btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ tự động");
-                                tvResult.setText("Hệ thống đang ở chế độ gạch thẻ bằng tay");
-                                timerNapAuto.cancel();
-                            }
+                            if(GlobalValue.isUpdateToServer == true){
+                                if(DataStoreManager.getCheDoNap().equals("0")){
+                                    DataStoreManager.saveCheDoNap("1");
+                                    btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ bằng tay");
+                                    tvResult.setText("Hệ thống đang ở chế độ gạch thẻ tự động");
+                                    timerNapAuto = new Timer();
+                                    //run process nap tu dong
+                                    progressAutoPayCard();
+                                }else {
+                                    DataStoreManager.saveCheDoNap("0");
+                                    btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ tự động");
+                                    tvResult.setText("Hệ thống đang ở chế độ gạch thẻ bằng tay");
+                                    timerNapAuto.cancel();
+                                }
                             /*set bg btn nap the*/
-                            setBackgroundBtnNapThe(DataStoreManager.getCheDoNap());
-                            dialogSwitchMode.dismiss();
+                                setBackgroundBtnNapThe(DataStoreManager.getCheDoNap());
+                                dialogSwitchMode.dismiss();
+                            }else {
+                                Toast.makeText(MainActivity.this, "Hiện vẫn còn thẻ đang xử lý, Vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
 
@@ -1065,8 +1068,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         if(status == true){
                             if(response.optJSONObject("res") != null && response.optJSONObject("res").optString("cardCode")!= null){
-
-
                                 GlobalValue.isGetOkCard = false;
                                 GlobalValue.isUpdateToServer = false;
                                 JSONObject jsonObjectRes = response.optJSONObject("res");

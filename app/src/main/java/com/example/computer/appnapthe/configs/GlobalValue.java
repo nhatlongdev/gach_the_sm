@@ -25,7 +25,7 @@ public class GlobalValue {
 	public static boolean isGetOkCard = false;
 
 	/*bien check trang thai the nap cuoi cung da update server chua*/
-	public static boolean isUpdateToServer = false;
+	public static boolean isUpdateToServer = true;
 
 	/*cake data suggest card*/
 	public static List<String> arrSuggestCodeCard = null;
