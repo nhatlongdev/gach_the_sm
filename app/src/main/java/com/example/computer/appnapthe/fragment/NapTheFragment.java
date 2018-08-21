@@ -1350,6 +1350,7 @@ public class NapTheFragment extends BaseFragment implements View.OnClickListener
                         Log.d("inForSIm", "SUCCESS- TRA THE: " + response.toString());
                         boolean status = response.optBoolean("s");
                         if(status == true){
+                            GlobalValue.isUpdateToServer = true;
                             checkClickBtnTraThe = false;
                             checkClickButton = 2;
                             showHiddenButton(checkClickButton);

@@ -687,33 +687,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     btnNo_huy_bo = dialogSwitchMode.findViewById(R.id.btn_no);
                     TextView tvMsg = dialogSwitchMode.findViewById(R.id.tv_msg);
                     if(DataStoreManager.getCheDoNap().equals("0")){
-                        tvMsg.setText("Bạn có chắc chắn muốn chuyển sang chế độ nạp thẻ tự động không ?");
+                        if(GlobalValue.isUpdateToServer == true){
+                            tvMsg.setText("Bạn có chắc chắn muốn chuyển sang chế độ nạp thẻ tự động không ?");
+                        }else {
+                            tvMsg.setText("Lưu ý! Có thẻ đang xử lý. Bạn có chắc chắn muốn chuyển sang chế độ nạp thẻ tự động không ?");
+                        }
                     }else {
-                        tvMsg.setText("Bạn có chắc chắn muốn chuyển sang chế độ nạp thẻ bằng tay không ?");
+                        if(GlobalValue.isUpdateToServer == true){
+                            tvMsg.setText("Bạn có chắc chắn muốn chuyển sang chế độ nạp thẻ bằng tay không ?");
+                        }else {
+                            tvMsg.setText("Lưu ý! Có thẻ đang xử lý. Bạn có chắc chắn muốn chuyển sang chế độ nạp thẻ bằng tay không ?");
+                        }
                     }
                     btnYes_the_loi.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(GlobalValue.isUpdateToServer == true){
-                                if(DataStoreManager.getCheDoNap().equals("0")){
-                                    DataStoreManager.saveCheDoNap("1");
-                                    btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ bằng tay");
-                                    tvResult.setText("Hệ thống đang ở chế độ gạch thẻ tự động");
-                                    timerNapAuto = new Timer();
-                                    //run process nap tu dong
-                                    progressAutoPayCard();
-                                }else {
-                                    DataStoreManager.saveCheDoNap("0");
-                                    btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ tự động");
-                                    tvResult.setText("Hệ thống đang ở chế độ gạch thẻ bằng tay");
-                                    timerNapAuto.cancel();
-                                }
-                            /*set bg btn nap the*/
-                                setBackgroundBtnNapThe(DataStoreManager.getCheDoNap());
-                                dialogSwitchMode.dismiss();
+                            if(DataStoreManager.getCheDoNap().equals("0")){
+                                DataStoreManager.saveCheDoNap("1");
+                                btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ bằng tay");
+                                tvResult.setText("Hệ thống đang ở chế độ gạch thẻ tự động");
+                                timerNapAuto = new Timer();
+                                //run process nap tu dong
+                                progressAutoPayCard();
                             }else {
-                                Toast.makeText(MainActivity.this, "Hiện vẫn còn thẻ đang xử lý, Vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
+                                DataStoreManager.saveCheDoNap("0");
+                                btnSwitchModeNap.setText("Chuyển chế độ nạp thẻ tự động");
+                                tvResult.setText("Hệ thống đang ở chế độ gạch thẻ bằng tay");
+                                timerNapAuto.cancel();
                             }
+                            /*set bg btn nap the*/
+                            setBackgroundBtnNapThe(DataStoreManager.getCheDoNap());
+                            dialogSwitchMode.dismiss();
                         }
                     });
 
@@ -1143,7 +1147,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         }else {
                             //LỖI KHÔNG LẤY ĐƯỢC THẺ
+                            String error = response.optJSONObject("error").optString("text");
                             Log.d("inForSIm", "LỖI KO LẤY ĐƯỢC THẺ: " + response.toString());
+                            Toast.makeText(MainActivity.this, error , Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
