@@ -941,9 +941,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         /*xu ly am thanh thong bao co the*/
                                         MediaPlayer player = MediaPlayer.create(getApplicationContext(), R.raw.huy_mon_huy_bill);
                                         player.start();
-                                        Vibrator v = (Vibrator)getApplication().getSystemService(Context.VIBRATOR_SERVICE);
+//                                        Vibrator v = (Vibrator)getApplication().getSystemService(Context.VIBRATOR_SERVICE);
                                         // Vibrate for 1 seconds
-                                        v.vibrate(1000);
+//                                        v.vibrate(1000);
                                         rltBell.startAnimation(shake);
                                     }else if(countCard == GlobalValue.soCardLayLanGanNhat){
                                         Log.d("test_media","TH2===> countCard: " + countCard + " soCardLayLanGanNhat: " + GlobalValue.soCardLayLanGanNhat);
@@ -954,9 +954,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             /*xu ly am thanh thong bao co the*/
                                             MediaPlayer player = MediaPlayer.create(getApplicationContext(), R.raw.huy_mon_huy_bill);
                                             player.start();
-                                            Vibrator v = (Vibrator)getApplication().getSystemService(Context.VIBRATOR_SERVICE);
+//                                            Vibrator v = (Vibrator)getApplication().getSystemService(Context.VIBRATOR_SERVICE);
                                             // Vibrate for 1 seconds
-                                            v.vibrate(1000);
+//                                            v.vibrate(1000);
                                             rltBell.startAnimation(shake);
                                         }
                                     }
